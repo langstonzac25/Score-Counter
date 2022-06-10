@@ -1,3 +1,4 @@
+#load modules
 import pygame
 from pygame.locals import *
 
@@ -8,7 +9,7 @@ pygame.init()
 clock = pygame.time.Clock()
 fps = 20
 
-
+#screen dimmensions
 screen_width = 900
 screen_height = 579
 
@@ -47,6 +48,7 @@ score_2 = 0
 global server
 server = 1
 
+#find the users name
 global userName1
 userName1 = input("Who is the first competitor?         ")
 global userName2
@@ -159,7 +161,7 @@ def spawnballl(spawnl):
 def spawnballr(spawnr):
     if spawnr == 1:
         screen.blit(table,(0, 0))
-        screen.blit(ball,(675, 289))       
+        screen.blit(ball,(675, 289))
 
 def determinendgameonewin():
     global endgamenow
@@ -213,7 +215,8 @@ while run == 1:
     
     spawnballl(spawnballleft)
     spawnballr(spawnballright)
-    
+    spawnballleft = 0
+    spawnballright = 0
     
     display1score(score_1)
     display2score(score_2)
