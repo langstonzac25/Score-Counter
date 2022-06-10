@@ -40,6 +40,8 @@ global score_1
 score_1 = 0
 global score_2
 score_2 = 0
+global server
+server = 1
 
 global userName1
 userName1 = input("Who is the first competitor?         ")
@@ -77,6 +79,72 @@ def display1score(sc1):
 def display2score(sc2):
     print (userName2)
     print (sc2)
+
+#Determine who shold serve
+def whoistheserver(sc1, sc2):
+    total = sc1 + sc2
+    print(sc1 + sc2)
+    if total == 1:
+        print("odd")
+    if total == 2:
+        print("even")
+    if total == 3:
+        print("odd")
+    if total == 4:
+        print("even")
+    if total == 5:
+        print("odd")
+    if total == 6:
+        print("even")
+    if total == 7:
+        print("odd")
+    if total == 8:
+        print("even")
+    if total == 9:
+        print("odd")
+    if total == 10:
+        print("even")
+    if total == 11:
+        print("odd")
+    if total == 12:
+        print("even")
+    if total == 13:
+        print("odd")
+    if total == 14:
+        print("even")
+    if total == 15:
+        print("odd")
+    if total == 16:
+        print("even")
+    if total == 17:
+        print("odd")
+    if total == 18:
+        print("even")
+    if total == 19:
+        print("odd")
+    if total == 20:
+        print("even")
+    if total == 21:
+        print("odd")
+    if total == 22:
+        print("even")
+    if total == 23:
+        print("odd")
+    if total == 24:
+        print("even")
+    if total == 25:
+        print("odd")
+    if total == 26:
+        print("even")
+    if total == 27:
+        print("odd")
+    if total == 28:
+        print("even")
+    if total == 29:
+        print("odd")
+    if total == 30:
+        print("even")
+
     
 def determinendgameonewin():
     global endgamenow
@@ -126,6 +194,7 @@ while run == 1:
     addplayeronepoint(pointadd)
     addplayertwopoint(pointadd)
     
+    whoistheserver(score_1, score_2)
     
     display1score(score_1)
     display2score(score_2)
