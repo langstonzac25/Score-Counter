@@ -1,8 +1,6 @@
 import pygame
 from pygame.locals import *
 
-people = 687
-things = 432234
 
 pygame.init()
 
