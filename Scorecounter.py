@@ -1,7 +1,7 @@
 import pygame
 from pygame.locals import *
 
-lol
+
 
 pygame.init()
 
@@ -10,7 +10,7 @@ fps = 20
 
 
 screen_width = 900
-screen_height = 600
+screen_height = 579
 
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption('Score Counter')
@@ -20,10 +20,14 @@ surface = pygame.display.set_mode((screen_width, screen_height))
 
 
 #load images
-table = pygame.image.load("/home/pi/Documents/Python_Programs/Scorecounter/Images/table.png")
-ball = pygame.image.load("/home/pi/Documents/Python_Programs/Scorecounter/Images/pingpongball.png")
+table = pygame.image.load("Images\pingpongtablefinal.png")
+ball = pygame.image.load("Images/pingpongball.png")
 
-screen.blit(table, (500, 100))
+
+screen.blit(table,(0, 0))
+screen.blit(ball,(0, 0))
+pygame.display.flip()
+
 
 #My varibles
 global endgamenow
@@ -102,7 +106,12 @@ while run == 1:
     
     clock.tick(fps)
     
-    screen.blit(table, (0, 0))
+    screen.blit(ball, (0, 0))
+    
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            run = False
+    
     
     key = pygame.key.get_pressed()
     if key[pygame.K_1]:
@@ -125,6 +134,8 @@ while run == 1:
     determinendgametwowin()
     endgame(endgamenow)
     
+    
+    pygame.display.flip()
     
     
 pygame.quit()
