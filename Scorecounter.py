@@ -30,6 +30,10 @@ pygame.display.flip()
 
 
 #My varibles
+global spawnballleft
+spawnballleft = 0
+global spawnballright
+spawnballright = 0
 global endgamenow
 endgamenow = 0
 global pointadd
@@ -83,69 +87,80 @@ def display2score(sc2):
 #Determine who shold serve
 def whoistheserver(sc1, sc2):
     total = sc1 + sc2
+    global spawnballleft
+    global spawnballright
     print(sc1 + sc2)
     if total == 1:
-        print("odd")
+        spawnballleft = 1
     if total == 2:
-        print("even")
+        spawnballright = 1
     if total == 3:
-        print("odd")
+        spawnballleft = 1
     if total == 4:
-        print("even")
+        spawnballright = 1
     if total == 5:
-        print("odd")
+        spawnballleft = 1
     if total == 6:
-        print("even")
+        spawnballright = 1
     if total == 7:
-        print("odd")
+        spawnballleft = 1
     if total == 8:
-        print("even")
+        spawnballright = 1
     if total == 9:
-        print("odd")
+        spawnballleft = 1
     if total == 10:
-        print("even")
+        spawnballright = 1
     if total == 11:
-        print("odd")
+        spawnballleft = 1
     if total == 12:
-        print("even")
+        spawnballright = 1
     if total == 13:
-        print("odd")
+        spawnballleft = 1
     if total == 14:
-        print("even")
+        spawnballright = 1
     if total == 15:
-        print("odd")
+        spawnballleft = 1
     if total == 16:
-        print("even")
+        spawnballright = 1
     if total == 17:
-        print("odd")
+        spawnballleft = 1
     if total == 18:
-        print("even")
+        spawnballright = 1
     if total == 19:
-        print("odd")
+        spawnballleft = 1
     if total == 20:
-        print("even")
+        spawnballright = 1
     if total == 21:
-        print("odd")
+        spawnballleft = 1
     if total == 22:
-        print("even")
+        spawnballright = 1
     if total == 23:
-        print("odd")
+        spawnballleft = 1
     if total == 24:
-        print("even")
+        spawnballright = 1
     if total == 25:
-        print("odd")
+        spawnballleft = 1
     if total == 26:
-        print("even")
+        spawnballright = 1
     if total == 27:
-        print("odd")
+        spawnballleft = 1
     if total == 28:
-        print("even")
+        spawnballright = 1
     if total == 29:
-        print("odd")
+        spawnballleft = 1
     if total == 30:
-        print("even")
+        spawnballright = 1
 
-    
+def spawnballl(spawnl):
+    if spawnl == 1:
+        screen.blit(table,(0, 0))
+        screen.blit(ball,(225, 289))
+
+def spawnballr(spawnr):
+    if spawnr == 1:
+        screen.blit(table,(0, 0))
+        screen.blit(ball,(675, 289))       
+
 def determinendgameonewin():
     global endgamenow
     if score_1 >= 11:
@@ -195,6 +210,10 @@ while run == 1:
     addplayertwopoint(pointadd)
     
     whoistheserver(score_1, score_2)
+    
+    spawnballl(spawnballleft)
+    spawnballr(spawnballright)
+    
     
     display1score(score_1)
     display2score(score_2)
