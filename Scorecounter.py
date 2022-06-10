@@ -1,6 +1,7 @@
 import pygame
 from pygame.locals import *
 
+help = 56
 
 pygame.init()
 
