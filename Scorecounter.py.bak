@@ -1,6 +1,8 @@
 import pygame
 from pygame.locals import *
 
+made with the raspberry pi
+
 
 pygame.init()
 
