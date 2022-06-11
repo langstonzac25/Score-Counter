@@ -16,17 +16,15 @@ screen_height = 579
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption('Score Counter')
 
-surface = pygame.display.set_mode((screen_width, screen_height))
-#blue = (0, 0, 255)
 
 
 #load images
 table = pygame.image.load("Images\pingpongtablefinal.png")
-ball = pygame.image.load("Images/pingpongball.png")
+ball = pygame.image.load("Images\pingpongball.png")
 
-
+#initial picture processing
 screen.blit(table,(0, 0))
-screen.blit(ball,(0, 0))
+screen.blit(ball,(225, 289))
 pygame.display.flip()
 
 
@@ -61,11 +59,12 @@ print ("")
 print ("")
 
 
-
+#find who won
 def whogotpoint():
     global pointadd
     pointadd = int(input("Who got the point?        "))
-    
+
+#add the players points
 def addplayeronepoint(who1):
     if who1 == 1:
         global score_1
@@ -76,7 +75,7 @@ def addplayertwopoint(who2):
         global score_2
         score_2 = score_2 + 1
                         
-    
+#display the scores    
 def display1score(sc1):
     print (userName1)
     print (sc1)
