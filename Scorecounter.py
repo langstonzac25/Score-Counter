@@ -91,54 +91,56 @@ def whoistheserver(sc1, sc2):
     global spawnballleft
     global spawnballright
     print(sc1 + sc2)
+    if total == 0:
+        spawnballleft = 1
     if total == 1:
         spawnballleft = 1
     if total == 2:
         spawnballright = 1
     if total == 3:
-        spawnballleft = 1
-    if total == 4:
         spawnballright = 1
+    if total == 4:
+        spawnballleft = 1
     if total == 5:
         spawnballleft = 1
     if total == 6:
         spawnballright = 1
     if total == 7:
-        spawnballleft = 1
-    if total == 8:
         spawnballright = 1
+    if total == 8:
+        spawnballleft = 1
     if total == 9:
         spawnballleft = 1
     if total == 10:
         spawnballright = 1
     if total == 11:
-        spawnballleft = 1
-    if total == 12:
         spawnballright = 1
+    if total == 12:
+        spawnballleft = 1
     if total == 13:
         spawnballleft = 1
     if total == 14:
         spawnballright = 1
     if total == 15:
-        spawnballleft = 1
-    if total == 16:
         spawnballright = 1
+    if total == 16:
+        spawnballleft = 1
     if total == 17:
         spawnballleft = 1
     if total == 18:
         spawnballright = 1
     if total == 19:
-        spawnballleft = 1
-    if total == 20:
         spawnballright = 1
+    if total == 20:
+        spawnballleft = 1
     if total == 21:
         spawnballleft = 1
     if total == 22:
         spawnballright = 1
     if total == 23:
-        spawnballleft = 1
-    if total == 24:
         spawnballright = 1
+    if total == 24:
+        spawnballleft = 1
     if total == 25:
         spawnballleft = 1
     if total == 26:
@@ -146,12 +148,14 @@ def whoistheserver(sc1, sc2):
     if total == 27:
         spawnballleft = 1
     if total == 28:
-        spawnballright = 1
-    if total == 29:
         spawnballleft = 1
+    if total == 29:
+        spawnballright = 1
     if total == 30:
         spawnballright = 1
 
+
+#spawn balls
 def spawnballl(spawnl):
     if spawnl == 1:
         screen.blit(table,(0, 0))
@@ -162,6 +166,7 @@ def spawnballr(spawnr):
         screen.blit(table,(0, 0))
         screen.blit(ball,(675, 289))
 
+#Did the game end?
 def determinendgameonewin():
     global endgamenow
     if score_1 >= 11:
@@ -173,7 +178,8 @@ def determinendgametwowin():
     if score_2 >= 11:
         if score_2 - score_1 >= 2:
             endgamenow = 1
-    
+
+#The end of the game
 def endgame(endgamenowfun):
     if endgamenowfun == 1:
         global run
@@ -185,6 +191,8 @@ def endgame(endgamenowfun):
         global endgamenow
         endgamenow = 0
 
+
+#Main Loop
 run = 1
 while run == 1: 
     
