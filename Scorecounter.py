@@ -206,13 +206,10 @@ while run == 1:
     
     
     #get keypresses
-    key = pygame.key.get_pressed()
-    if key[pygame.K_SPACE]:
-        screen.blit(ball, (0, 0))
-    if key[pygame.K_LEFT]:
-        pass
-    if key[pygame.K_RIGHT]:
-        pass
+    event = pygame.event.wait()
+    if event.type == KEYDOWN:
+        if event.key == K_SPACE:
+            screen.blit(ball, (0, 0))
     
     
     
