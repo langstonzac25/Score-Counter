@@ -64,6 +64,7 @@ def whogotpoint():
     global pointadd
     pointadd = int(input("Who got the point?        "))
 
+
 #add the players points
 def addplayeronepoint(who1):
     if who1 == 1:
@@ -74,18 +75,18 @@ def addplayertwopoint(who2):
     if who2 == 2:
         global score_2
         score_2 = score_2 + 1
-                        
+
+
 #display the scores    
 def display1score(sc1):
     print (userName1)
-    print (sc1)
-    
-    
+    print (sc1)  
     
 def display2score(sc2):
     print (userName2)
     print (sc2)
-
+    
+    
 #Determine who shold serve
 def whoistheserver(sc1, sc2):
     total = sc1 + sc2
@@ -166,6 +167,7 @@ def spawnballr(spawnr):
         screen.blit(table,(0, 0))
         screen.blit(ball,(675, 289))
 
+
 #Did the game end?
 def determinendgameonewin():
     global endgamenow
@@ -179,6 +181,7 @@ def determinendgametwowin():
         if score_2 - score_1 >= 2:
             endgamenow = 1
 
+
 #The end of the game
 def endgame(endgamenowfun):
     if endgamenowfun == 1:
@@ -190,7 +193,6 @@ def endgame(endgamenowfun):
         score_2 = 0
         global endgamenow
         endgamenow = 0
-
 
 
 #Main Loop
