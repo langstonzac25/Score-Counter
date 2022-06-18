@@ -19,8 +19,8 @@ pygame.display.set_caption('Score Counter')
 
 
 #load images
-table = pygame.image.load("Images\pingpongtablefinal.png")
-ball = pygame.image.load("Images\pingpongball.png")
+table = pygame.image.load("Images/pingpongtablefinal.png")
+ball = pygame.image.load("Images/pingpongball.png")
 
 #initial picture processing
 screen.blit(table,(0, 0))
@@ -79,8 +79,9 @@ def addplayertwopoint(who2):
 def display1score(sc1):
     print (userName1)
     print (sc1)
-
-
+    
+    
+    
 def display2score(sc2):
     print (userName2)
     print (sc2)
@@ -90,7 +91,6 @@ def whoistheserver(sc1, sc2):
     total = sc1 + sc2
     global spawnballleft
     global spawnballright
-    print(sc1 + sc2)
     if total == 0:
         spawnballleft = 1
     if total == 1:
@@ -192,24 +192,27 @@ def endgame(endgamenowfun):
         endgamenow = 0
 
 
+
 #Main Loop
 run = 1
 while run == 1: 
     
     clock.tick(fps)
     
-    screen.blit(ball, (0, 0))
     
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
     
     
+    #get keypresses
     key = pygame.key.get_pressed()
-    if key[pygame.K_1]:
-        print ("key 1 pressed.")
-    if key[pygame.K_2]:
-        print ("hello")
+    if key[pygame.K_SPACE]:
+        screen.blit(ball, (0, 0))
+    if key[pygame.K_LEFT]:
+        pass
+    if key[pygame.K_RIGHT]:
+        pass
     
     
     
