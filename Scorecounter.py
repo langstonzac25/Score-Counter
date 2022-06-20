@@ -28,6 +28,12 @@ screen.blit(ball,(225, 289))
 pygame.display.flip()
 
 
+event = pygame.event.wait()
+if event.type == KEYDOWN:
+    if event.key == K_SPACE:
+        screen.blit(ball, (0, 0))
+
+
 #My varibles
 global spawnballleft
 spawnballleft = 0
@@ -206,13 +212,13 @@ while run == 1:
         if event.type == pygame.QUIT:
             run = False
     
-    
+
     #get keypresses
-    event = pygame.event.wait()
-    if event.type == KEYDOWN:
-        if event.key == K_SPACE:
-            screen.blit(ball, (0, 0))
-    
+#    event = pygame.event.wait()
+#   if event.type == KEYDOWN:
+#       if event.key == K_SPACE:
+#           screen.blit(ball, (0, 0))
+            
     
     
     whogotpoint()
