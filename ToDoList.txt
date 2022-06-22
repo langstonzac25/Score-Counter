@@ -1,2 +1,8 @@
 Finish labeling the code
 Fix the server detector
+Add The scores in the window
+add the endgame thing in the window
+clean out trash code
+optimize the code
+make the game look pretty
+make the the game run from the desktop and the start menu

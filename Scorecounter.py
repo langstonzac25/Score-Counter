@@ -1,13 +1,13 @@
 #load modules
-import pygame
+import pygame, sys, time
 from pygame.locals import *
 
 
-
 pygame.init()
+fpsClock = pygame.time.Clock()
 
 clock = pygame.time.Clock()
-fps = 20
+fps = 60
 
 #screen dimmensions
 screen_width = 900
@@ -26,12 +26,6 @@ ball = pygame.image.load("Images/pingpongball.png")
 screen.blit(table,(0, 0))
 screen.blit(ball,(225, 289))
 pygame.display.flip()
-
-
-event = pygame.event.wait()
-if event.type == KEYDOWN:
-    if event.key == K_SPACE:
-        screen.blit(ball, (0, 0))
 
 
 #My varibles
@@ -60,12 +54,33 @@ userName2 = input("Who is the second competitor?        ")
 
 print ("")
 print ("")
-print ("When inputing who got the point please use the numbers 1 and 2.")
+print ("When inputing please use the number keys.")
 print ("")
 print ("")
 
+#player titles
+def displayplayertitlesplayer_one():
+	white = 0, 0, 0
+	playertitleFont = pygame.font.Font ('freesansbold.ttf', 42)
+	playertitleSurf = playertitleFont.render ('Player 1', True, white)
+	playertitleRect = playertitleSurf.get_rect()
+	playertitleRect.midtop = (225, 12)
+	screen.blit(playertitleSurf, playertitleRect)
+	pygame.display.flip()
 
-#find who won
+
+def displayplayertitlesplayer_two():
+	white = 0, 0, 0
+	playertitleFont = pygame.font.Font ('freesansbold.ttf', 42)
+	playertitleSurf = playertitleFont.render ('Player 2', True, white)
+	playertitleRect = playertitleSurf.get_rect()
+	playertitleRect.midtop = (675, 12)
+	screen.blit(playertitleSurf, playertitleRect)
+	pygame.display.flip()
+    
+
+
+#find who won that point
 def whogotpoint():
     global pointadd
     pointadd = int(input("Who got the point?        "))
@@ -92,7 +107,26 @@ def display2score(sc2):
     print (userName2)
     print (sc2)
     
-    
+ #Real Score Displayer
+def displayplayer_onescores(score_1):
+	white = 0, 0, 0
+	playertitleFont = pygame.font.Font ('freesansbold.ttf', 40)
+	playertitleSurf = playertitleFont.render ('points', True, white)
+	playertitleRect = playertitleSurf.get_rect()
+	playertitleRect.midtop = (225, 42)
+	screen.blit(playertitleSurf, playertitleRect)
+	pygame.display.flip()
+	
+def displayplayer_twoscores(score_2):
+	white = 0, 0, 0
+	playerscoreFont = pygame.font.Font ('freesansbold.ttf', 40)
+	playerscoreSurf = playerscoreFont.render ('points', True, white)
+	playerscoreRect = playerscoreSurf.get_rect()
+	playerscoreRect.midtop = (675, 42)
+	screen.blit(playerscoreSurf, playerscoreRect)
+	pygame.display.flip()
+        
+   
 #Determine who shold serve
 def whoistheserver(sc1, sc2):
     total = sc1 + sc2
@@ -180,68 +214,107 @@ def determinendgameonewin():
     if score_1 >= 11:
         if score_1 - score_2 >= 2:
             endgamenow = 1
+            print("Congrats You Won!")
 
 def determinendgametwowin():
     global endgamenow
     if score_2 >= 11:
         if score_2 - score_1 >= 2:
             endgamenow = 1
+            print("Congrats You Won!")
 
 
 #The end of the game
 def endgame(endgamenowfun):
     if endgamenowfun == 1:
         global run
-        run = int(input("To play again type 1. To quit type any other number:   "))
+        run = int(input("To play again type 1. To quit type 2   "))
         global score_1
         score_1 = 0
         global score_2
         score_2 = 0
         global endgamenow
         endgamenow = 0
-
+        if run == 2:
+            #time.sleep(5)
+            pygame.quit()
+            sys.exit()
+            
+displayplayertitlesplayer_one()
+displayplayertitlesplayer_two()
 
 #Main Loop
 run = 1
 while run == 1: 
-    
+	
+	
     clock.tick(fps)
     
-    
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            run = False
-    
-
-    #get keypresses
-#    event = pygame.event.wait()
-#   if event.type == KEYDOWN:
-#       if event.key == K_SPACE:
-#           screen.blit(ball, (0, 0))
-            
-    
-    
-    whogotpoint()
-    
-    addplayeronepoint(pointadd)
-    addplayertwopoint(pointadd)
-    
     whoistheserver(score_1, score_2)
-    
+    displayplayer_onescores(score_1)
+    displayplayer_twoscores(score_2)
+	
+
+    displayplayertitlesplayer_one()
+    displayplayertitlesplayer_two()
     spawnballl(spawnballleft)
     spawnballr(spawnballright)
     spawnballleft = 0
     spawnballright = 0
+                
+                
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            run = False
+            pygame.quit()
+            sys.exit()
+        
+        elif event.type == KEYDOWN:
+            
+            
+            if event.key == K_1:
+				
+                pointadd = 1
+                
+                addplayeronepoint(pointadd)
+                addplayertwopoint(pointadd)
+                pointadd = 0
     
-    display1score(score_1)
-    display2score(score_2)
-    
-    determinendgameonewin()
-    determinendgametwowin()
-    endgame(endgamenow)
-    
-    
-    pygame.display.flip()
-    
-    
+                whoistheserver(score_1, score_2)
+                
+                spawnballl(spawnballleft)
+                spawnballr(spawnballright)
+                spawnballleft = 0
+                spawnballright = 0
+                
+                display1score(score_1)
+                display2score(score_2)
+                
+                determinendgameonewin()
+                determinendgametwowin()
+                endgame(endgamenow)
+                
+                
+            if event.key == K_2:
+							
+                pointadd = 2
+                
+                addplayeronepoint(pointadd)
+                addplayertwopoint(pointadd)
+                pointadd = 0
+                
+                whoistheserver(score_1, score_2)
+                
+                spawnballl(spawnballleft)
+                spawnballr(spawnballright)
+                spawnballleft = 0
+                spawnballright = 0
+                
+                display1score(score_1)
+                display2score(score_2)
+                
+                determinendgameonewin()
+                determinendgametwowin()
+                endgame(endgamenow)
+
 pygame.quit()
